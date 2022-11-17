@@ -1,0 +1,34 @@
+﻿@model PRA__Projekt.Models.Question
+
+@{
+    ViewData["Title"] = "CreateQuestions";
+}
+
+<h1>CreateQuestions</h1>
+
+<h4>Question</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <form asp-action="CreateQuestions">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="QuestionText" class="control-label">Question text</label>
+                <input asp-for="QuestionText" class="form-control" />
+                <span asp-validation-for="QuestionText" class="text-danger"></span>
+            </div>
+            <input type="hidden" name="QuizId" value="@Model.QuizId" />
+            
+            
+            <div class="form-group">
+                <input type="submit" value="Add" class="btn btn-block btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Admin" asp-controller="quiz" asp-route-id="@Model.Quiz.Code">Cancel</a>
+</div>
+

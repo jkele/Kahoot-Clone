@@ -1,0 +1,45 @@
+﻿@model PRA__Projekt.Models.QuizQuestionsVM
+
+@{
+    ViewData["Title"] = "Quiz Detail";
+}
+
+<h4>Quiz</h4>
+<hr />
+<h4>@Model.Quiz.Title</h4>
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+
+        <p>Quiz access code: @Model.Quiz.Code</p>
+
+    </div>
+</div>
+
+<hr />
+
+<h4>Questions</h4>
+<a asp-action="CreateQuestions" asp-route-id="@Model.Quiz.Id" class="btn btn-primary">Create more questions</a>
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+
+        @foreach (var q in Model.Questions)
+        {
+            <p>@q.QuestionText</p>
+        }
+    </div>
+</div>
+
+
+<hr />
+<h4>Players waiting</h4>
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+
+        @foreach (var p in ViewBag.Players)
+        {
+            <p>@p</p>
+        }
+    </div>
+</div>
+
+

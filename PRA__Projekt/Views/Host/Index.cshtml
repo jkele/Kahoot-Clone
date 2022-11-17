@@ -1,0 +1,65 @@
+﻿@model IEnumerable<PRA__Projekt.Models.Quiz>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a href="/Quiz/Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Started)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Started)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedOn)
+                </td>
+                <td>
+                    @if (item.Ended)
+                    {
+                    <p>
+                        <a asp-action="Summary" asp-route-id="@item.Code">View Summary</a>
+                    </p>
+                    }
+                    else
+                    {
+                        <p>
+                            <a asp-action="admin" asp-controller="quiz" asp-route-id="@item.Code">Setup</a> |
+                            <a asp-action="Details" asp-route-id="@item.Code">Start Game!</a>
+                        </p>
+                    }
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewData["Title"] = "QuizNotFound";
+}
+
+<hr />
+<div class="text-center col-md-6 offset-md-3">
+    <h3>Awww snap...</h3>
+    <p>This quiz couldn't be found :(</p>
+</div>
+
+<hr />
+<div class="text-center col-md-6 offset-md-3">
+    <h3>Try another code here:</h3>
+    <form action="/quiz/admin" method="get">
+        <input type="text" name="id" class="form-control" placeholder="Quiz Code" />
+        <button class="btn btn-block btn-info">Go</button>
+    </form>
+</div>

@@ -1,0 +1,34 @@
+﻿@model PRA__Projekt.Models.QuizSummaryVM
+@{
+    ViewData["Title"] = "Summary";
+}
+
+<h4>Quiz Summary</h4>
+<hr />
+<h4>@Model.Quiz.Title</h4>
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+
+        <p>Quiz access code: @Model.Quiz.Code</p>
+
+    </div>
+</div>
+
+<hr />
+
+<h4>Questions and Answers</h4>
+
+<div class="row">
+    @foreach (var q in Model.Questions)
+    {
+    <div class="col-md-12">
+        <strong>@q.QuestionText</strong>
+    </div>
+        @foreach (var a in Model.Answers.Where(i => i.QuestionId == q.Id).ToList())
+        {
+            <div class="col-md-6">@a.UserId</div>
+
+            <div class="col-md-6">@a.AnswerText</div>
+        }
+    }
+</div>

@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+</div>
+
+<hr />
+<div class="text-center col-md-6 offset-md-3" id="joinquiz" style="display:none" >
+    <h3>Join a quiz</h3>
+    <form action="/play" method="get">
+        <input type="text" name="id" class="form-control" placeholder="Quiz Code" />
+        <button class="btn btn-block btn-info">Go</button>
+        <br />
+        <a href="/" class="">Go back</a>
+    </form>
+</div>
+
+<hr />
+
+
+<div class="text-center col-md-6 offset-md-3" id="hostquiz" style="display:none;">
+    <h3>Manage a quiz</h3>
+        <a href="/quiz/Create"  class="btn btn-block btn-primary">Host a new quiz</a>
+        <p>or</p>
+        <a href="/host" class="btn btn-block btn-primary">List all quizzes</a>
+    <br />
+        <a href="/" class="">Go back</a>
+</div>
+
+
+<div class="text-center col-md-6 offset-md-3" id="selectquiz">
+    <div class="col-md-6 offset-md-3">
+        <button class="btn btn-block btn-info" onclick="showoptions('joinquiz')">I'm Playing a Quiz</button>
+        <button class="btn btn-block btn-primary" onclick="showoptions('hostquiz')">I'm Hosting a Quiz</button>
+        <br />
+    </div>
+</div>
+
+
+
+<script defer>
+    function showoptions(showme) {
+        document.getElementById(showme).style.display = 'block';
+        document.getElementById('selectquiz').style.display = 'none';
+    }
+</script>

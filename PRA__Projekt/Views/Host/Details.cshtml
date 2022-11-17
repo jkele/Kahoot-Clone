@@ -1,0 +1,27 @@
+﻿@model PRA__Projekt.Models.HostQuestionVM
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Question Details...</h1>
+
+<div>
+    <h4>@Model.Question.QuestionText</h4>
+    <hr />
+    <ul>
+        @foreach (var item in Model.Answers)
+        {
+            <li><strong>@item.UserId</strong> @item.AnswerText</li>
+        }
+    </ul>
+</div>
+
+<hr />
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <a asp-action="nextquestion" asp-route-id="@Model.Question.Quiz.Code">Load next question</a>
+    </div>
+</div>
+
+

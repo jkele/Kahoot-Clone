@@ -1,0 +1,39 @@
+﻿@model PRA__Projekt.Models.Answer
+@{
+    ViewData["Title"] = "Game";
+}
+
+<h1>Question Details...</h1>
+
+<div>
+    <h4>@ViewBag.Question</h4>
+    <hr />
+
+    @if (string.IsNullOrEmpty(Model.AnswerText))
+    {
+
+        <form asp-action="Answer">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" name="Id" value="@ViewBag.TrueAnswerId" />
+            <div class="form-group">
+                <label asp-for="AnswerText" class="control-label"></label>
+                <input asp-for="AnswerText" class="form-control" />
+                <span asp-validation-for="AnswerText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    }
+    else
+    {
+        <strong>Your answer:</strong>
+        @Model.AnswerText
+
+        <script defer>
+            setTimeout(function () { location.reload; }, 3000);
+        </script>
+    }
+</div>
+
